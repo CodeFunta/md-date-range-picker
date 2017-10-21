@@ -26,6 +26,7 @@
                 firstDayOfWeek: '=?',
                 showTemplate: '=?',
                 mdOnSelect: '&?',
+                mdOnUpdateActivedate: '&?',
                 localizationMap: '=?',
                 customTemplates: '=?',
                 disableTemplates: '@',
@@ -456,6 +457,9 @@
                 $scope.activeMonth2 = d2.getMonth();
             }
             $scope.focusToDate(d);
+            if ($scope.mdOnUpdateActivedate) {
+                $scope.mdOnUpdateActivedate({$date: d, $date2:d2});
+            }
         }
 
         function handleClickNextMonth($event) {
