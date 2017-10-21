@@ -464,12 +464,20 @@
 
         function handleClickNextMonth($event) {
             var d = new Date($scope.activeDate.getFullYear(), $scope.activeDate.getMonth() + 1, 1);
+            var d2 = new Date(d.getFullYear(), d.getMonth() + 1, 1);
             $scope.focusToDate(d);
+            if ($scope.mdOnUpdateActivedate) {
+                $scope.mdOnUpdateActivedate({$date: d, $date2:d2});
+            }
         }
 
         function handleClickPrevMonth($event) {
             var d = new Date($scope.activeDate.getFullYear(), $scope.activeDate.getMonth() - 1, 1);
+            var d2 = new Date(d.getFullYear(), d.getMonth() + 1, 1);
             $scope.focusToDate(d);
+            if ($scope.mdOnUpdateActivedate) {
+                $scope.mdOnUpdateActivedate({$date: d, $date2:d2});
+            }
         }
 
         function handleClickSelectToday() {
