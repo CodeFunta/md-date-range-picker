@@ -656,7 +656,6 @@
                 '    <span style="text-align: left; padding: 12px 20px 0 20px" disabled>{{ngModel.selectedTemplateName || placeholder}}</span>',
                 '    <md-date-range-picker first-day-of-week="firstDayOfWeek" ',
                 '     md-on-select="autoConfirm && ok()" ',
-                '     md-on-update-activedate="autoConfirm && ok()" ',
                 '     date-start="ngModel.dateStart" ',
                 '     date-end="ngModel.dateEnd" ',
                 '     selected-template="ngModel.selectedTemplate" ',
@@ -690,7 +689,11 @@
                     var ret = null;
                     if ($scope.ngModel && $scope.ngModel.localizationMap != null && $scope.ngModel.localizationMap[val] != null) {
                         ret = $scope.ngModel.localizationMap[val];
-                    } else {
+                    } 
+                    if ($scope.localizationMap && $scope.localizationMap != null && $scope.localizationMap[val] != null) {
+                        ret = $scope.localizationMap[val];
+                    } 
+                    else {
                         ret = val;
                     }
                     return ret;
