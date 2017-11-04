@@ -664,7 +664,7 @@
                 '     custom-templates="customTemplates" ',
                 '     disable-templates="{{disableTemplates}}" ',
                 '     is-disabled-date="isDisabledDate({ $date: $date })" ',
-                '     md-on-select="mdOnSelect({ $date: $date })" ',
+                //'     md-on-select="mdOnSelect({ $date: $date })" ',
                 '     md-on-update-activedate="mdOnUpdateActivedate({$date: $date, $date2:$date2})" ',
                 '     max-range="maxRange" ',
                 '     one-panel="onePanel" ',
@@ -678,6 +678,10 @@
             controller: ['$scope', '$mdMenu', function ($scope, $mdMenu) {
                 $scope.ok = function ok() {
                     $mdMenu.hide();
+                    if ($scope.mdOnSelect) {
+                        $scope.mdOnSelect({ $date: $scope.ngModel.dateStart, $date2:$scope.ngModel.dateEnd });
+                    }
+                    
                 }
                 $scope.clear = function clear() {
                     $scope.ngModel.selectedTemplateName = '';

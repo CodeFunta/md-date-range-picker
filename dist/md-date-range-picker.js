@@ -1,7 +1,7 @@
 /*
 * Name: md-date-range-picker
 * Version: 0.6.3
-* Build Date: 10/30/2017
+* Build Date: 11/4/2017
 * Author: roel barreto <greatcodeideas@gmail.com>
 */
 (function (window, angular) {
@@ -664,7 +664,7 @@
                 '     custom-templates="customTemplates" ',
                 '     disable-templates="{{disableTemplates}}" ',
                 '     is-disabled-date="isDisabledDate({ $date: $date })" ',
-                '     md-on-select="mdOnSelect({ $date: $date })" ',
+                //'     md-on-select="mdOnSelect({ $date: $date })" ',
                 '     md-on-update-activedate="mdOnUpdateActivedate({$date: $date, $date2:$date2})" ',
                 '     max-range="maxRange" ',
                 '     one-panel="onePanel" ',
@@ -678,6 +678,10 @@
             controller: ['$scope', '$mdMenu', function ($scope, $mdMenu) {
                 $scope.ok = function ok() {
                     $mdMenu.hide();
+                    if ($scope.mdOnSelect) {
+                        $scope.mdOnSelect({ $date: $scope.ngModel.dateStart, $date2:$scope.ngModel.dateEnd });
+                    }
+                    
                 }
                 $scope.clear = function clear() {
                     $scope.ngModel.selectedTemplateName = '';
